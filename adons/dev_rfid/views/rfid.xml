@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--tree view of the tag model-->
+    <record id="tag_tree" model="ir.ui.view">
+        <field name="name">rfid.tag.tree</field>
+        <field name="model">rfid.tag</field>
+        <field name="arch" type="xml">
+            <tree string="tags">
+                    <field name="tag_name"/>
+<!--                    <field name="name_seq"/>-->
+                    <field name="epc"/>
+                    <field name="user"/>
+                    <field name="tid"/>
+                    <field name="password"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+<!--form view of the tag model-->
+    <record id="tag_form" model="ir.ui.view">
+        <field name="name">rfid.tag.form</field>
+        <field name="model">rfid.tag</field>
+        <field name="arch" type="xml">
+            <form string="tag">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+<!--                            <field name="name_seq"/>-->
+                            <field name="tag_name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="epc"/>
+                            <field name="user"/>
+                        </group>
+                        <group>
+                            <field name="tid"/>
+                            <field name="password"/>
+                        </group>
+                    </group>
+                        <field name="notes"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+<!--    <record id="hospital_patient_search" model="ir.ui.view">-->
+<!--        <field name="name">hospital.patient.search</field>-->
+<!--        <field name="model">hospital.patient</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search string="Search Patients">-->
+<!--                <field name="name" filter_domain=-->
+<!--                        "['|',('patient_name','ilike',self),('name_seq','ilike',self)]"/>-->
+<!--                <field name="name_seq"/>-->
+<!--                <field name="patient_name"/>-->
+<!--                <separator/>-->
+<!--                <filter string="Male" name="male" domain="[('gender','=','male')]"/>-->
+<!--                <filter string="Female" name="male" domain="[('gender','=','female')]"/>-->
+<!--&lt;!&ndash;                <filter string="Leads" name="leads" domain="[('type', '=', 'opportunity')]">&ndash;&gt;-->
+<!--                <group expand="0" string="Group By">-->
+<!--                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>-->
+<!--                </group>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    action of the patients menu-->
+    <record id="action_rfid" model="ir.actions.act_window">
+        <field name="name">tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rfid.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_female":1}</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_smiling_face">
+            <!-- Add Text Here -->
+          Create First tag
+            <!-- More details about what a user can do with this object will be OK -->
+          </p>
+        </field>
+    </record>
+
+
+    <menuitem id="rfid_root" name="rfid" sequence="0" web_icon="bg_rfid,static/description/icon.png"/>
+    <menuitem id="rfid_patient" name="tag" parent="rfid_root" action="action_rfid"/>
+
+
+</odoo>
