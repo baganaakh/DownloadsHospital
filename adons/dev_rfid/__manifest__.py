@@ -13,7 +13,6 @@
     'demo': [],
     'data': [
         'views/rfid.xml',
-        'data/sequence.xml',
         'security/ir.model.access.csv'
     ],
     'images': ['static/description/icon.png'],

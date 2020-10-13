@@ -12,6 +12,7 @@
           <field name="enter_date"/>
           <field name="out_date"/>
           <field name="status"/>
+<!--          <field name="parked_time"/>-->
         </tree>
       </field>
     </record>
