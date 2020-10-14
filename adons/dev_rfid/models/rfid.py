@@ -18,11 +18,24 @@ class rfidReader(models.Model):
     user=fields.Char(string='User')
     tid=fields.Char(sting='Tid')
     password=fields.Char(string='password')
+    lot_ids=fields.One2many(string='Lots')
+    # lot_ids = fields.Many2many(
+    #     'stock.production.lot'
+    #     , 'rfid_tag_lot_rel'
+    #     , 'tag_id'
+    #     , 'lot_id'
+    #     , 'Lots'
+    # )
 
-    lot_ids = fields.Many2many(
-        'stock.production.lot'
-        , 'rfid_tag_lot_rel'
-        , 'rfid_tag_id'
-        , 'lot_id'
-        , 'Lots'
-    )
+
+class tagLotRel(models.Model):
+    _name = 'rfid_tag_lot_rel'
+    _description = 'relation of the tag_ID and lot_id'
+
+    tag_id=fields.Integer()
+    lot_id=fields.Integer()
+
+#     product_id=fields.Many2one('product.template',string='Products')
+#     order_id = fields.Many2one('sale.order', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+#     order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines',
+#                                  states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)

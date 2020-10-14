@@ -11,6 +11,7 @@
                     <field name="user"/>
                     <field name="tid"/>
                     <field name="password"/>
+                    <field name="lot_ids"/>
                 <field name="notes"/>
             </tree>
         </field>
@@ -40,6 +41,7 @@
                             <field name="password"/>
                         </group>
                     </group>
+                        <field name="lot_ids"/>
                         <field name="notes"/>
                 </sheet>
                 <div class="oe_chatter">
@@ -66,8 +68,20 @@
           </p>
         </field>
     </record>
+<!--    <record id="action_rfid_lot" model="ir.actions.act_window">-->
+<!--        <field name="name">Relations</field>-->
+<!--        <field name="type">ir.actions.act_window</field>-->
+<!--        <field name="res_model">rfid_tag_lot_rel</field>-->
+
+<!--        <field name="help" type="html">-->
+<!--            <p class="oe_view_nocontent_smiling_face">-->
+<!--                no no no-->
+<!--            </p>-->
+<!--        </field>-->
+<!--    </record>-->
 
 
     <menuitem id="rfid_root" name="rfid" sequence="0" parent="" web_icon="bg_rfid,static/description/icon.png"/>
     <menuitem id="rfid_patient" name="tag" parent="rfid_root" action="action_rfid"/>
+<!--    <menuitem id="rfid_lot" name="rfid lot rel" parent="rfid_root" action="action_rfid_lot"/>-->
 </odoo>
