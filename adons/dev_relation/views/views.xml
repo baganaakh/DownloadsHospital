@@ -7,7 +7,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="tag_id"/>
-          <field name="active"/>
+          <field name="act"/>
           <field name="lots"/>
         </tree>
       </field>
@@ -21,10 +21,10 @@
           <sheet>
             <group>
               <group>
-                <field name="tag_id"/>
-                <field name="active"/>
+                <field name="lots"/>
+                <field name="act"/>
               </group>
-              <field name="lots"/>
+                <field name="tag_id"/>
             </group>
 
           </sheet>

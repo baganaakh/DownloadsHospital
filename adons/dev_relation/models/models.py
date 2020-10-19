@@ -8,13 +8,17 @@ class dev_relation(models.Model):
     _description = 'dev_relation.dev_relation'
 
     tag_id=fields.Many2one('rfid.tag', string='Tag')
-    active=fields.Boolean(string='Active')
-    lots=fields.One2many('dev_relation.dev_relation.conn','lots_con',string='Lots')
-
-class manyConnect(models.Model):
-    _name = 'dev_relation.dev_relation.conn'
-    _description = 'connect fields'
-    lots_con=fields.Many2one('stock.production.lot','name',required=True)
+    lots=fields.Many2one('stock.production.lot', string='Tag')
+    act=fields.Boolean(string='Active')
+    # lots=fields.One2many(comodel_name= 'stock.production.lot', inverse_name='product_id', string='Lots')
+    # lots=fields.One2many('dev_relation.dev_relation.conn','Stock_lot',string='Lots')
+#
+# class manyConnect(models.Model):
+#     _name = 'dev_relation.dev_relation.conn'
+#     _description = 'connect fields'
+#
+#     # lots_con=fields.Many2one('dev_relation.dev_relation',required=True)
+#     Stock_lot=fields.Many2one('stock.production.lot',required=True)
 
 
 
