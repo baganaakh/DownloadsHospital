@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view">
+      <field name="name">rfid.dev_relation.tree</field>
+      <field name="model">rfid.dev_relation</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="tag_id"/>
+          <field name="active"/>
+          <field name="lots"/>
+        </tree>
+      </field>
+    </record>
+<!--form-->
+    <record id="rel_form" model="ir.ui.view">
+      <field name="name">rfid.dev_relation.form</field>
+      <field name="model">rfid.dev_relation</field>
+      <field name="arch" type="xml">
+        <form string="tag">
+          <sheet>
+            <group>
+              <group>
+                <field name="tag_id"/>
+                <field name="active"/>
+              </group>
+              <field name="lots"/>
+            </group>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="rfid.action_window">
+      <field name="name">dev_relation window</field>
+      <field name="res_model">rfid.dev_relation</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="rfid.action_server">
+      <field name="name">dev_relation server</field>
+      <field name="model_id" ref="model_dev_relation_dev_relation"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="dev_relation" id="rfid.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="rfid.menu_1" parent="rfid.menu_root"/>
+    <!-- actions -->
+    <menuitem name="List" id="rfid.menu_1_list" parent="rfid.menu_1"
+              action="rfid.action_window"/>
+  </data>
+</odoo>
