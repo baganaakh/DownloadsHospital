@@ -20,16 +20,22 @@ class rfidReader(models.Model):
     password=fields.Char(string='password')
 
 
+class rfidLine(models.Model):
+    _name = 'rfid.tag.line'
+    _description = 'rfid tag line'
 
-
-    lot_12m=fields.One2many('sale.order.line', 'order_id',string='lot one2many')
-    lot_ids = fields.Many2many(
-        'stock.production.lot'
-        , 'rfid_tag_lot_rel'
-        , 'tag_id'
-        , 'lot_id'
-        , 'Lots'
-    )
+    # order_id = fields.Many2one('sale.order', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+#     order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines',
+#                                  states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)
+    tag_id = fields.Many2one('rfid.tag', string='Order Reference', required=True, ondelete='cascade', index=True, copy=False)
+    # lot_12m=fields.One2many('sale.order.line', 'order_id',string='lot one2many')
+    # lot_ids = fields.Many2many(
+    #     'stock.production.lot'
+    #     , 'rfid_tag_lot_rel'
+    #     , 'tag_id'
+    #     , 'lot_id'
+    #     , 'Lots'
+    # )
 
     # lot_m21=fields.Many2one('stock.production.lot',string='lot many2one')
 # class tagLotRel(models.Model):
@@ -42,5 +48,3 @@ class rfidReader(models.Model):
 #     product_id=fields.Many2one('product.template',string='Products')
 #     order_id = fields.Many2one('sale.order', string='Order Reference', required=True,
 #                                   ondelete='cascade', index=True, copy=False)
-#     order_line = fields.One2many('sale.order.line', 'order_id', string='Order Lines',
-#                                  states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)

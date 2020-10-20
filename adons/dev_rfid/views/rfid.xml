@@ -12,8 +12,6 @@
                 <field name="tid"/>
                 <field name="password"/>
                 <field name="notes"/>
-                <field name="lot_ids"/>
-
             </tree>
         </field>
     </record>
@@ -42,7 +40,6 @@
                             <field name="password"/>
                         </group>
                     </group>
-                        <field name="lot_ids"/>
                         <field name="notes"/>
                 </sheet>
                 <div class="oe_chatter">

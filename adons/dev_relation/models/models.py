@@ -7,9 +7,16 @@ class dev_relation(models.Model):
     _name = 'dev_relation.dev_relation'
     _description = 'dev_relation.dev_relation'
 
-    tag_id=fields.Many2one('rfid.tag', string='Tag')
-    lots=fields.Many2one('stock.production.lot', string='Tag')
+    lot=fields.Many2one('stock.production.lot', string='Lot')
     act=fields.Boolean(string='Active')
+    # tag_line = fields.One2many('rfid.tag.line', 'tag_id', string='Tag Lines', copy=True)
+    tag_id1=fields.Many2one('rfid.tag', string='Tag1')
+    tag_id2=fields.Many2one('rfid.tag', string='Tag2')
+    tag_id3=fields.Many2one('rfid.tag', string='Tag3')
+    tag_id4=fields.Many2one('rfid.tag', string='Tag4')
+    tag_id5=fields.Many2one('rfid.tag', string='Tag5')
+    tag_id6=fields.Many2one('rfid.tag', string='Tag6')
+
     # lots=fields.One2many(comodel_name= 'stock.production.lot', inverse_name='product_id', string='Lots')
     # lots=fields.One2many('dev_relation.dev_relation.conn','Stock_lot',string='Lots')
 #
