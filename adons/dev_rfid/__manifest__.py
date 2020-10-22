@@ -9,10 +9,11 @@
     'maintainer': 'baganaakh@gmail.com',
     'website': 'http://baganaakh.blogspot.com',
     'live_test_url': '',
-    'depends': ['mail','stock'],
+    'depends': ['stock'],
     'demo': [],
     'data': [
         'views/rfid.xml',
+        'views/relation.xml',
         'security/ir.model.access.csv'
     ],
     'images': ['static/description/icon.png'],

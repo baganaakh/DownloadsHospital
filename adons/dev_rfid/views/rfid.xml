@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 <!--tree view of the tag model-->
-    <record id="dev_rfid_tag_tree" model="ir.ui.view">
+    <record id="tag_tree" model="ir.ui.view">
         <field name="name">tag.tree</field>
         <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
@@ -18,7 +18,7 @@
     </record>
 
 <!--form view of the tag model-->
-    <record id="dev_rfid_tag_form" model="ir.ui.view">
+    <record id="tag_form" model="ir.ui.view">
         <field name="name">tag.form</field>
         <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
@@ -44,16 +44,16 @@
                     </group>
                         <field name="notes"/>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="activity_ids" widget="mail_activity"/>
-                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
-                </div>
+<!--                <div class="oe_chatter">-->
+<!--                    <field name="message_follower_ids" widget="mail_followers"/>-->
+<!--                    <field name="activity_ids" widget="mail_activity"/>-->
+<!--                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>-->
+<!--                </div>-->
             </form>
         </field>
     </record>
 
-<!--    action of the patients menu-->
+<!--    action of the rfid menu-->
     <record id="action_rfid" model="ir.actions.act_window">
         <field name="name">tags</field>
         <field name="type">ir.actions.act_window</field>

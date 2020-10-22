@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-    <record id="lot_tag_tree" model="ir.ui.view">
+    <record id="rel_tree" model="ir.ui.view">
       <field name="name">Relation.tree</field>
       <field name="model">dev.rfid.tag.lot.rel</field>
       <field name="arch" type="xml">
@@ -27,7 +27,7 @@
 
 <!--form-->
     <record id="rel_form" model="ir.ui.view">
-      <field name="name">Relation.form</field>
+      <field name="name">relation.form</field>
       <field name="model">dev.rfid.tag.lot.rel</field>
       <field name="arch" type="xml">
         <form string="tag">
@@ -45,7 +45,7 @@
       </field>
     </record>
     <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="dev_relation.action_window">
+    <record id="action_relation" model="ir.actions.act_window">
       <field name="name">Relation</field>
       <field name="res_model">dev.rfid.tag.lot.rel</field>
       <field name="view_mode">tree,form</field>
@@ -65,8 +65,7 @@
 <!--      </field>-->
 <!--    </record>-->
 
-    <menuitem name="Relation" id="dev_relation.menu_1_list" parent="mrp.menu_mrp_manufacturing"
-              action="dev_relation.action_window" sequence="100"/>
-
+    <menuitem name="Relation" id="any" parent="mrp.menu_mrp_manufacturing"
+              action="action_relation" sequence="100"/>
   </data>
 </odoo>
