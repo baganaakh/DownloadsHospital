@@ -28,3 +28,13 @@ class RfidTagLotRel(models.Model):
 #     # lots_con=fields.Many2one('dev_relation.dev_relation',required=True)
 #     Stock_lot=fields.Many2one('stock.production.lot',required=True)
 
+
+#     name = fields.Char()
+#     value = fields.Integer()
+#     value2 = fields.Float(compute="_value_pc", store=True)
+#     description = fields.Text()
+#
+#     @api.depends('value')
+#     def _value_pc(self):
+#         for record in self:
+#             record.value2 = float(record.value) / 100

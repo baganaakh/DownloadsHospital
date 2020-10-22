@@ -2,7 +2,7 @@
 <odoo>
 <!--tree view of the tag model-->
     <record id="dev_rfid_tag_tree" model="ir.ui.view">
-        <field name="name">dev.rfid.tag.tree</field>
+        <field name="name">tag.tree</field>
         <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
             <tree string="tags">
@@ -19,7 +19,7 @@
 
 <!--form view of the tag model-->
     <record id="dev_rfid_tag_form" model="ir.ui.view">
-        <field name="name">dev.rfid.tag.form</field>
+        <field name="name">tag.form</field>
         <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
             <form string="tag">
@@ -68,7 +68,7 @@
         </field>
     </record>
 
-    <menuitem id="rfid_root" name="rfid" sequence="0" parent="" web_icon="bg_rfid,static/description/icon.png"/>
-    <menuitem id="rfid_patient" name="tag" parent="rfid_root" action="action_rfid"/>
+<!--    <menuitem id="rfid_root" name="RFID" sequence="0" parent="" web_icon="bg_rfid,static/description/icon.png"/>-->
+    <menuitem id="rfid_patient" name="Tag" sequence="100" parent="mrp.menu_mrp_bom" action="action_rfid"/>
 
 </odoo>
