@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "dev_relation",
+    'name': "school_student",
 
     'summary': """
-        Relation of dev.rfid.tag and lot,serial""",
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Relation of dev.rfid.tag and lot,serial
+        Long description of module's purpose
     """,
 
-    'author': "scaffold",
+    'author': "My Company",
     'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -19,19 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','dev_rfid'],
+    'depends': ['base', 'school'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/relation.xml',
+        'views/views.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
 }

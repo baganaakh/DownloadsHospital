@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 <!--tree view of the tag model-->
-    <record id="tag_tree" model="ir.ui.view">
-        <field name="name">rfid.tag.tree</field>
-        <field name="model">rfid.tag</field>
+    <record id="dev_rfid_tag_tree" model="ir.ui.view">
+        <field name="name">dev.rfid.tag.tree</field>
+        <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
             <tree string="tags">
                 <field name="tag_name"/>
+<!--                <field name="tag_id"/>-->
                 <field name="epc"/>
                 <field name="user"/>
                 <field name="tid"/>
@@ -17,9 +18,9 @@
     </record>
 
 <!--form view of the tag model-->
-    <record id="tag_form" model="ir.ui.view">
-        <field name="name">rfid.tag.form</field>
-        <field name="model">rfid.tag</field>
+    <record id="dev_rfid_tag_form" model="ir.ui.view">
+        <field name="name">dev.rfid.tag.form</field>
+        <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
             <form string="tag">
                 <sheet>
@@ -34,6 +35,7 @@
                         <group>
                             <field name="epc"/>
                             <field name="user"/>
+<!--                            <field name="tag_id"/>-->
                         </group>
                         <group>
                             <field name="tid"/>
@@ -55,7 +57,7 @@
     <record id="action_rfid" model="ir.actions.act_window">
         <field name="name">tags</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">rfid.tag</field>
+        <field name="res_model">dev.rfid.tag</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
           <p class="oe_view_nocontent_smiling_face">
@@ -65,20 +67,8 @@
           </p>
         </field>
     </record>
-<!--    <record id="action_rfid_lot" model="ir.actions.act_window">-->
-<!--        <field name="name">Relations</field>-->
-<!--        <field name="type">ir.actions.act_window</field>-->
-<!--        <field name="res_model">rfid_tag_lot_rel</field>-->
-
-<!--        <field name="help" type="html">-->
-<!--            <p class="oe_view_nocontent_smiling_face">-->
-<!--                no no no-->
-<!--            </p>-->
-<!--        </field>-->
-<!--    </record>-->
-
 
     <menuitem id="rfid_root" name="rfid" sequence="0" parent="" web_icon="bg_rfid,static/description/icon.png"/>
     <menuitem id="rfid_patient" name="tag" parent="rfid_root" action="action_rfid"/>
-<!--    <menuitem id="rfid_lot" name="rfid lot rel" parent="rfid_root" action="action_rfid_lot"/>-->
+
 </odoo>
