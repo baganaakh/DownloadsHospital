@@ -6,7 +6,7 @@
         <field name="model">dev.rfid.tag</field>
         <field name="arch" type="xml">
             <tree string="tags">
-                <field name="tag_name"/>
+                <field name="name"/>
 <!--                <field name="tag_id"/>-->
                 <field name="epc"/>
                 <field name="user"/>
@@ -28,7 +28,7 @@
 <!--                    <widget name="web_ribbon" text="not hdfg" bg_color="bg-warning" attrs="{'invisible':[('epc', '=', 'hdfg')]}"/>-->
                     <div class="oe_title">
                         <h1>
-                            <field name="tag_name"/>
+                            <field name="name"/>
                         </h1>
                     </div>
                     <group>
@@ -44,11 +44,11 @@
                     </group>
                         <field name="notes"/>
                 </sheet>
-<!--                <div class="oe_chatter">-->
-<!--                    <field name="message_follower_ids" widget="mail_followers"/>-->
-<!--                    <field name="activity_ids" widget="mail_activity"/>-->
-<!--                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>-->
-<!--                </div>-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
             </form>
         </field>
     </record>

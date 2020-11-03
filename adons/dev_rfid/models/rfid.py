@@ -5,10 +5,10 @@ from odoo.exceptions import ValidationError
 class RfidTag(models.Model):
     _name = 'dev.rfid.tag'
     _description = 'rfid tag lists'
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     # _rec_name = 'tag_name'
 
-    tag_name = fields.Char(string='Name', required=True, track_visibility='always')
+    name = fields.Char(string='Name', required=True, track_visibility='always')
     notes = fields.Text(string='Notes', track_visibility='always')
     epc = fields.Char(string='EPC', required=True)
     _sql_constraints = [
@@ -19,7 +19,12 @@ class RfidTag(models.Model):
     tid = fields.Char(sting='Tid')
     password = fields.Char(string='Tag Password')
     # tag_id=fields.Many2one('dev.rfid.tag.lot.rel',string='tag_id')
-
+    # @api.multi
+    # def name_get(self):
+    #     res = []
+    #     for field in self:
+    #         res.append((field.id, '%s %s' % (field.tag_name, field.epc)))
+    #     return res
 # class RfidTagLotRel(models.Model):
 #     _inherit = 'dev.rfid.tag.lot.rel'
 #

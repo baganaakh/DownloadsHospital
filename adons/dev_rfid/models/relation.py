@@ -1,16 +1,35 @@
 # -*- coding: utf-8 -*-
+import logging
 
 from odoo import models, fields, api
+from datetime import date,timedelta
 
-
+_logger = logging.getLogger(__name__)
 class RfidTagLotRel(models.Model):
     _name = 'dev.rfid.tag.lot.rel'
     _description = 'lot tag relation'
 
-    lot = fields.Many2one('stock.production.lot', string='Lot')
+
+    minday= date.today()-timedelta(days=3)
+    # domain = "[('create_date','>',minday)]",
+    lot_id = fields.Many2one('stock.production.lot', string='Lot')
+    # lot = fields.Many2one(compute='get_lots', string='Lot')
     # tag_id = fields.One2many('dev.rfid.tag', 'tag_id', string='Tags', copy=True)
     status = fields.Boolean(string='Status')
-    tag_id = fields.Many2one('dev.rfid.tag', string='tag id')
+    tag_id = fields.Many2one('dev.rfid.tag', string='Tag')
+
+
+
+    def get_lots(self):
+        lots=[]
+        fprods=self.env['product.template'].search([('name','=','(п)')])
+        _logger.critical('!!! str( fprods ) = "' + str(fprods) + '" !!!')
+
+        for each in fprods:
+            lot=self.env['stock.production.lot'].search([('product_id','=',each.id)])
+            _logger.critical('!!! str( lot ) = "' + str(lot) + '" !!!')
+        #     lots.append(lot.id)
+        #     self.lot=lots
 
 # class RfidTag(models.Model):
 #     _inherit = 'dev.rfid.tag'

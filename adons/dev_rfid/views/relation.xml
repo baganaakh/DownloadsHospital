@@ -34,10 +34,13 @@
           <sheet>
             <group>
               <group>
+<!--                <field name="lot" domain="[('create_uid','=',2)]"/>-->
                 <field name="lot"/>
                 <field name="status"/>
               </group>
+              <group>
                 <field name="tag_id"/>
+              </group>
             </group>
 
           </sheet>
