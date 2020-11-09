@@ -11,14 +11,20 @@ class RfidTagLotRel(models.Model):
 
 
     minday= date.today()-timedelta(days=3)
-    # domain = "[('create_date','>',minday)]",
     lot_id = fields.Many2one('stock.production.lot', string='Lot')
-    # lot = fields.Many2one(compute='get_lots', string='Lot')
-    # tag_id = fields.One2many('dev.rfid.tag', 'tag_id', string='Tags', copy=True)
+    # status = fields.Boolean(compute='make_last', string='Status')
     status = fields.Boolean(string='Status')
     tag_id = fields.Many2one('dev.rfid.tag', string='Tag')
+    product_Id=fields.Integer(compute='get_prod')
 
-
+    def get_lot_id(self,tags):
+        tags= self.env['dev.rfid.tag'].search([['epc', '=', 'AAA2']])
+        _logger.critical('!!! str( tags ) = "' + str(tags) + '" !!!')
+        lots= self.env['dev.rfid.tag.lot.rel'].search([['tag_id', '=', tags]])
+        _logger.critical('!!! str( llots ) = "' + str(lots) + '" !!!')
+        return lots
+    # lot_id = models.execute_kw(db, uid, password, 'dev.rfid.tag.lot.rel', 'search_read',
+    #                            [[['tag_id', '=', tag_id]]], {'fields': ['lot', 'tag_id']})
 
     def get_lots(self):
         lots=[]
@@ -31,6 +37,20 @@ class RfidTagLotRel(models.Model):
         #     lots.append(lot.id)
         #     self.lot=lots
 
+    @api.depends('lot_id')
+    def get_prod(self):
+        lotId=self.lot_id
+        prod = self.env['stock.production.lot'].search([['', '=', lotId]])
+        for each in prod:
+            product_id=each.product_id
+            _logger.critical('!!! str( product_id ) = "' + str(product_id) + '" !!!')
+            return product_id
+    # @api.depends('tag_id')
+    # def make_last(self):
+    #     results=self.env.cr.execute(
+    #         'UPDATE public.dev_rfid_tag_lot_rel SET status = False WHERE tag_id = {};'%self.tag_id)
+    #     _logger.critical('!!! str( update results) = "' + str(results) + '" !!!')
+    #     return True
 # class RfidTag(models.Model):
 #     _inherit = 'dev.rfid.tag'
 #   tag_id = fields.Many2one('dev.rfid.tag.lot.rel', string='tag id')
